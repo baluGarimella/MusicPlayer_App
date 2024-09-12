@@ -26,7 +26,6 @@ import com.music.player.presentation.welcomePage.getMusicFromDevice
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-//Activity for DisplayingMusic Player
 class MusicPlayer : AppCompatActivity() {
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var platBtn:ImageView
@@ -62,25 +61,19 @@ class MusicPlayer : AppCompatActivity() {
         platBtn=findViewById<ImageView>(R.id.play)
         seekBar = findViewById(R.id.seekbar_time)
 
-        val dao=SongsDataBase.getInstance(applicationContext).EventDao()
+        val dao=SongsDataBase.getInstance(applicationContext).MusicPlayerDao()
         val mainRepository=MainRepositoryImpl(dao)
         val myViewModelFactory=MyViewModelFactory(mainRepository)
         welcomePageViewModel=ViewModelProvider(this,myViewModelFactory).get(WelcomePageViewModel::class.java)
-//       GlobalScope.launch {
-//           musicData?.let { welcomePageViewModel.insert(it) }
-//       }
-
 
         val filePath = musicData?.filePath
 
         mediaPlayer = MediaPlayer()
 
         forwardBtn.setOnClickListener {
-//            Toast.makeText(applicationContext,"jd",Toast.LENGTH_SHORT).show()
             playNextSong(musicData)
         }
         backBtn.setOnClickListener {
-//            Toast.makeText(applicationContext,"jd",Toast.LENGTH_SHORT).show()
             playPreviousSong(musicData)
 
         }
@@ -109,9 +102,6 @@ class MusicPlayer : AppCompatActivity() {
                 item.isVisible = false
                 
 
-                //implementing like and unlike
-
-
                 Toast.makeText(applicationContext,"dat",Toast.LENGTH_LONG).show()
                 true
             }
@@ -124,7 +114,6 @@ class MusicPlayer : AppCompatActivity() {
 
     private fun seekbarrunner() {
         seekBar.progress=0
-        // Set the maximum value of the seek bar to the audio duration
         seekBar.max=mediaPlayer.duration
         val handler = Handler()
 
@@ -136,7 +125,7 @@ class MusicPlayer : AppCompatActivity() {
 
                 seekBar.progress = currentPosition
 
-                handler.postDelayed(this, 1000) // Update every second
+                handler.postDelayed(this, 1000)
 
             }
 
@@ -160,7 +149,6 @@ class MusicPlayer : AppCompatActivity() {
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
 
-                // Called when the user starts tracking the SeekBar
 
             }
 
@@ -168,7 +156,6 @@ class MusicPlayer : AppCompatActivity() {
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
 
-                // Called when the user stops tracking the SeekBar
 
             }
 

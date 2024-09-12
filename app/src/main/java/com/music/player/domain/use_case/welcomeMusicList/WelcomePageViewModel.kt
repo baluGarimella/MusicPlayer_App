@@ -12,27 +12,27 @@ class WelcomePageViewModel(private val userRepository: MainRepository) : ViewMod
 
      fun insert(dataModel: DataModel) {
 
-        userRepository.insert(dataModel)
+        userRepository.insertMusicItem(dataModel)
     }
 
      fun update(dataModel: DataModel) {
 
-         userRepository.update(dataModel)
+         userRepository.updateMusicItem(dataModel)
     }
 
      fun delete(dataModel: DataModel) {
 
-         userRepository.delete(dataModel)
+         userRepository.deleteMusicItem(dataModel)
     }
 
      fun deleteAllNotes() {
 
-         userRepository.deleteAllNotes()
+         userRepository.deleteAllMusicItems()
     }
 
      fun getAllNotes(): LiveData<List<DataModel>> {
 
-        return  userRepository.getAllNotes()
+        return  userRepository.getAllMusicItems()
     }
 
 

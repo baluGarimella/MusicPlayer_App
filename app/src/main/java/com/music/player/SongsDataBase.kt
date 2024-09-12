@@ -8,7 +8,7 @@ import com.music.player.presentation.welcomePage.DataModel
 
 @Database(entities = [DataModel::class], version = 1)
 abstract class SongsDataBase:RoomDatabase() {
-    abstract fun EventDao(): EventDao
+    abstract fun MusicPlayerDao(): MusicPlayerDao
 
     companion object {
         private var instance: SongsDataBase? = null

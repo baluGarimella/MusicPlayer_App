@@ -10,19 +10,19 @@ import androidx.room.Update
 import com.music.player.presentation.welcomePage.DataModel
 
 @Dao
-interface EventDao {
+interface MusicPlayerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(dataModel: DataModel)
+    fun insertMusicItem(dataModel: DataModel)
 
     @Update
-    fun update(dataModel: DataModel)
+    fun updateMusicItem(dataModel: DataModel)
 
     @Delete
-    fun delete(dataModel: DataModel)
+    fun deleteMusicItem(dataModel: DataModel)
 
     @Query("delete from data")
-    fun deleteAllNotes()
+    fun deleteAllMusicItems()
 
     @Query("select * from data order by title desc")
-    fun getAllNotes(): LiveData<List<DataModel>>
+    fun getAllMusicItems(): LiveData<List<DataModel>>
 }

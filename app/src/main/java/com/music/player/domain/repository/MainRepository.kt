@@ -3,15 +3,14 @@ package com.music.player.domain.repository
 import androidx.lifecycle.LiveData
 import com.music.player.presentation.welcomePage.DataModel
 
-/* Class For all logical operation please add all operation here and use in in MainRepositoryImpl*/
 interface MainRepository {
-    fun insert(dataModel: DataModel)
+    fun insertMusicItem(dataModel: DataModel)
 
-    fun update(dataModel: DataModel)
+    fun updateMusicItem(dataModel: DataModel)
 
-    fun delete(dataModel: DataModel)
+    fun deleteMusicItem(dataModel: DataModel)
 
-    fun deleteAllNotes()
+    fun deleteAllMusicItems()
 
-    fun getAllNotes(): LiveData<List<DataModel>>
+    fun getAllMusicItems(): LiveData<List<DataModel>>
 }

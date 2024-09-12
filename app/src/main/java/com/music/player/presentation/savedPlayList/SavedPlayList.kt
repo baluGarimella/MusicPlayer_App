@@ -38,7 +38,7 @@ class SavedPlayList : AppCompatActivity() {
         supportActionBar?.hide()
         supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.red)))
         window.statusBarColor=resources.getColor(R.color.red)
-        val dao = SongsDataBase.getInstance(applicationContext).EventDao()
+        val dao = SongsDataBase.getInstance(applicationContext).MusicPlayerDao()
         val mainRepository = MainRepositoryImpl(dao)
         val myViewModelFactory = MyViewModelFactory(mainRepository)
         welcomePageViewModel =

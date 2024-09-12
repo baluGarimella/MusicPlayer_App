@@ -11,20 +11,15 @@ import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.toLowerCase
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.music.player.R
 import com.music.player.presentation.musicPlayer.MusicPlayer
 import com.music.player.presentation.savedPlayList.SavedPlayList
-import java.util.Locale
 
-//Activity for  Welcome Page
 private const val STORAGE_PERMISSION_REQUEST_CODE=1001
 class WelcomePage : AppCompatActivity() {
   private  lateinit var menuItem: MenuItem
@@ -36,10 +31,7 @@ class WelcomePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.welcome_page)
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-//        val bar: ActionBar? = actionBar
-//        bar.setBackgroundDrawable( Color());
         supportActionBar?.setIcon(R.drawable.baseline_menu_24)
         supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.red)))
         supportActionBar?.title = "  Libary"
@@ -49,7 +41,6 @@ class WelcomePage : AppCompatActivity() {
 
         if (checkStoragePermission()) {
             songsFromMusicAdapter()
-//            musicSongFromDevicedapterAudioFiles()
         } else {
             requestStoragePermission()
         }
@@ -71,17 +62,14 @@ class WelcomePage : AppCompatActivity() {
             R.id.search_action ->{
                 val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 val searchView=item.actionView as SearchView
-                // Configure the search view (e.g., add listeners)
 
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        // Handle query submission
                         val data=getMusicFromDevice(applicationContext)
                         MusicAdatsater.filter(query.toString(),data)
                         return true
                     }
                     override fun onQueryTextChange(newText: String?): Boolean {
-                        // Handle query text change
 
 
                         val data=getMusicFromDevice(applicationContext)

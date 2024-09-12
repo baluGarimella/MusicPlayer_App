@@ -1,36 +1,35 @@
 package com.music.player.data.repository
 
 import androidx.lifecycle.LiveData
-import com.music.player.EventDao
+import com.music.player.MusicPlayerDao
 import com.music.player.domain.repository.MainRepository
 import com.music.player.presentation.welcomePage.DataModel
 
-/* Class For all logical operation please add all operation here*/
-class MainRepositoryImpl constructor(private var dao:EventDao
+class MainRepositoryImpl constructor(private var dao: MusicPlayerDao
 ) : MainRepository {
-    override fun insert(dataModel: DataModel) {
+    override fun insertMusicItem(dataModel: DataModel) {
 
-        dao.insert(dataModel)
+        dao.insertMusicItem(dataModel)
     }
 
-    override fun update(dataModel: DataModel) {
+    override fun updateMusicItem(dataModel: DataModel) {
 
-         dao.update(dataModel)
+         dao.updateMusicItem(dataModel)
     }
 
-    override fun delete(dataModel: DataModel) {
+    override fun deleteMusicItem(dataModel: DataModel) {
 
-         dao.delete(dataModel)
+         dao.deleteMusicItem(dataModel)
     }
 
-    override fun deleteAllNotes() {
+    override fun deleteAllMusicItems() {
 
-         dao.deleteAllNotes()
+         dao.deleteAllMusicItems()
     }
 
-    override fun getAllNotes(): LiveData<List<DataModel>> {
+    override fun getAllMusicItems(): LiveData<List<DataModel>> {
 
-        return  dao.getAllNotes()
+        return  dao.getAllMusicItems()
     }
 
 }
